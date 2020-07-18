@@ -1,5 +1,5 @@
 
-import com.gtranslate.Language;
+
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -21,14 +21,22 @@ public class Core extends ListenerAdapter {
     //Add Functionality, Detect Language
 
     char commandKey = '%';
-    HashMap<User, UserSettings> userPreferences = new HashMap<User, UserSettings>();
-
-    Translator translate;
+    HashMap<User, UserSettings> userPreferences = new HashMap<>();
+    Translator translate = Translator.getInstance();
+    Language lan = Language.getInstance();
 
     public void onMessageReceived(@NotNull MessageReceivedEvent mess){
         System.out.println("Message received from " + mess.getAuthor().getName() + " : " + mess.getMessage().getContentDisplay());
 
-        if(mess.getMessage().getContentRaw().charAt(0) == commandKey) {
+        if(userPreferences.get(mess.getAuthor()) == null) {
+            userPreferences.put(mess.getAuthor(), new UserSettings());
+        }
+
+        if(userPreferences.get(mess.getAuthor()).autoTranslate && !(mess.getMessage().getContentRaw().charAt(0) == commandKey)){
+            String translated = translate.translate(mess.getMessage().getContentRaw(), translate.detect((mess.getMessage().getContentRaw())), userPreferences.get(mess.getAuthor()).defaultLanguage);
+            respond(translated, mess);
+        }
+        else if(mess.getMessage().getContentRaw().charAt(0) == commandKey) {
 
             if(userPreferences.get(mess.getAuthor()) == null) {
                 userPreferences.put(mess.getAuthor(), new UserSettings());
@@ -42,15 +50,14 @@ public class Core extends ListenerAdapter {
 
     public void respond(CharSequence message, MessageReceivedEvent mess){
 
-        System.out.println("Responding");
-        System.out.println(Language.getInstance());
+
         mess.getChannel().sendMessage(message).queue();
 
     }
 
     public void handleCommands(@NotNull MessageReceivedEvent command){
 
-        String[] commandList = command.getMessage().getContentRaw().split(" ");
+        String[] commandList = command.getMessage().getContentRaw().split("-");
         String commandTrigger = commandList[0].substring(1);
         switch(commandTrigger){
 
@@ -58,23 +65,77 @@ public class Core extends ListenerAdapter {
 
 
                 try{
-                    Language.getInstance();
 
-                   userPreferences.get(command.getAuthor()).setDefaultLanguage(Language.getInstance());
+                    if(testLanguage(commandList[1])){
+                        userPreferences.get(command.getAuthor()).setDefaultLanguage(commandList[1]);
+                    }
+                    else{
+                        respond("Language not recognized. Use " + commandKey +"languages to get a list of languages", command);
+                    }
 
                 }
-                catch(IndexOutOfBoundsException e){
-                    respond(commandKey+"setDefaultLanguage [Language]. Use " + commandKey + "languages to get a list of languages", command);
-                }
-                catch(IllegalArgumentException l){
-                    respond("Language not recognized. Use " + commandKey +"languages to get a list of languages", command);
+                catch(IndexOutOfBoundsException e) {
+                    respond(commandKey + "setDefaultLanguage-[Language]. Use " + commandKey + "languages to get a list of languages", command);
                 }
                 break;
 
             case ("translate"):
+                try{
+
+
+
+                    if(userPreferences.get(command.getAuthor()).defaultLanguage != null){
+                        if(!testLanguage(commandList[1])){
+                            System.out.println(commandList[1]);
+                            //throw new RuntimeException();
+                        }
+                        respond(translate.translate(commandList[2], commandList[1],userPreferences.get(command.getAuthor()).defaultLanguage), command);
+                    }
+                    else{
+
+                        if(!testLanguage(commandList[1]) || !testLanguage(commandList[2])){
+                            System.out.println(commandList[1]);
+                            System.out.println(commandList[2]);
+                            //throw new RuntimeException();
+                        }
+                        System.out.println(commandList[1]);
+                        System.out.println(commandList[2]);
+                        System.out.println(commandList[3]);
+                        String transed = translate.translate(commandList[3], commandList[1], commandList[2]);
+                        System.out.println(transed == null);
+                        System.out.println(transed);
+                        respond(transed, command);
+
+                    }
+
+                }
+                catch(IndexOutOfBoundsException e){
+                    respond(commandKey+"translate-[Original Language]-[Target Language]-[Message]. If you have a default language set, this overrides to "+ commandKey +"translate [Original Language] [Message]. Use " + commandKey + "languages to get a list of languages", command);
+                }
+                //catch(NullPointerException r){
+                   // respond("Language invalid, please consult " + commandKey +"languages to get a list of languages", command);
+                //}
                 break;
 
-            case "autoTranslate":
+            case "enableAutoTranslate":
+                try{
+                    if(userPreferences.get(command.getAuthor()).defaultLanguage != null) {
+                        userPreferences.get(command.getAuthor()).autoTranslate = true;
+                    }
+                    else{
+                        respond("To use autoTranslate, you must select a defaultLanguage", command);
+                    }
+                }
+                catch(IndexOutOfBoundsException e){
+                    respond(commandKey+"enableAutoTranslate-[Target Language]. Use " + commandKey + "languages to get a list of languages", command);
+                }
+                /*catch(RuntimeException r){
+                    respond("Language invalid, please consult " + commandKey +"languages to get a list of languages", command);
+                }*/
+                break;
+
+            case "disableAutoTranslate":
+                userPreferences.get(command.getAuthor()).autoTranslate = false;
                 break;
 
             case "help":
@@ -92,8 +153,29 @@ public class Core extends ListenerAdapter {
                     }
                 }
                 catch(IndexOutOfBoundsException f){
-                    respond(commandKey + "setCommandKey [New CommandKey]", command);
+                    respond(commandKey + "setCommandKey-[New CommandKey]", command);
                 }
+                break;
+
+            case "languages":
+                break;
+
+            case "detectLanguageTranslate":
+                try{
+
+                    if(!testLanguage(commandList[1])){
+                        //throw new RuntimeException();
+                    }
+
+                    respond(translate.translate(commandList[2], translate.detect(commandList[2]), commandList[1]), command);
+
+                }
+                catch(IndexOutOfBoundsException e){
+                    respond(commandKey + "detectLanguageTranslate-[Target Language]-[Message]", command);
+                }
+                /*catch(RuntimeException r){
+                    respond("Language invalid, please consult " + commandKey +"languages to get a list of languages", command);
+                }*/
                 break;
 
             default:
@@ -102,6 +184,10 @@ public class Core extends ListenerAdapter {
         }
 
 
+    }
+
+    private boolean testLanguage(String lang){
+        return(!lan.getNameLanguage(lang).isBlank());
     }
 
 

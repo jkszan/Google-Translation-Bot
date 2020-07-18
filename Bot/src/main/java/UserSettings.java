@@ -1,8 +1,8 @@
-import com.gtranslate.Language;
+
 
 public class UserSettings {
 
-    Language defaultLanguage;
+    String defaultLanguage;
     boolean autoTranslate;
 
     public UserSettings(){
@@ -11,25 +11,15 @@ public class UserSettings {
 
     }
 
-    public void setDefaultLanguage(Language lang){
+    public void setDefaultLanguage(String lang){
         defaultLanguage = lang;
     }
 
-    public Language getDefaultLanguage(){
+    public String getDefaultLanguage(){
         return defaultLanguage;
     }
 
-    public void enableAutoTranslate(Language lang){
 
-    }
-
-    public void enableAutoTranslate(){
-
-    }
-
-    public void disableAutoTranslate(){
-
-    }
 
 
 }
