@@ -1,6 +1,0 @@
-Author.java
- Author
-Core.java
- Core
-Language.java
- Language

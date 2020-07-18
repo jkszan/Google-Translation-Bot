@@ -1,8 +1,15 @@
 
+import com.gtranslate.Language;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.jetbrains.annotations.NotNull;
+
+import com.gtranslate.*;
 import javax.security.auth.login.LoginException;
+import java.util.HashMap;
+
 
 
 public class Core extends ListenerAdapter {
@@ -11,38 +18,49 @@ public class Core extends ListenerAdapter {
     //Add Functionality, autoTranslate
     //Add Functionality, manual translate
     //Add Functionality, help command
+    //Add Functionality, Detect Language
 
-    Language defaultLanguage;
     char commandKey = '%';
+    HashMap<User, UserSettings> userPreferences = new HashMap<User, UserSettings>();
 
-    public void onMessageReceived(MessageReceivedEvent mess){
+    Translator translate;
+
+    public void onMessageReceived(@NotNull MessageReceivedEvent mess){
         System.out.println("Message received from " + mess.getAuthor().getName() + " : " + mess.getMessage().getContentDisplay());
 
-
         if(mess.getMessage().getContentRaw().charAt(0) == commandKey) {
+
+            if(userPreferences.get(mess.getAuthor()) == null) {
+                userPreferences.put(mess.getAuthor(), new UserSettings());
+            }
+
             handleCommands(mess);
+
         }
 
     }
 
-    public void respond(String message, MessageReceivedEvent mess){
+    public void respond(CharSequence message, MessageReceivedEvent mess){
 
-        mess.getChannel().sendMessage(message);
+        System.out.println("Responding");
+        System.out.println(Language.getInstance());
+        mess.getChannel().sendMessage(message).queue();
 
     }
 
-    public void handleCommands(MessageReceivedEvent command){
+    public void handleCommands(@NotNull MessageReceivedEvent command){
 
         String[] commandList = command.getMessage().getContentRaw().split(" ");
         String commandTrigger = commandList[0].substring(1);
         switch(commandTrigger){
 
-            /*case "setDefaultLanguage":
+            case "setDefaultLanguage":
+
 
                 try{
+                    Language.getInstance();
 
-                   Author user = (Author) command.getAuthor();
-                   user.setDefaultLanguage(Language.valueOf(commandList[1]));
+                   userPreferences.get(command.getAuthor()).setDefaultLanguage(Language.getInstance());
 
                 }
                 catch(IndexOutOfBoundsException e){
@@ -51,7 +69,7 @@ public class Core extends ListenerAdapter {
                 catch(IllegalArgumentException l){
                     respond("Language not recognized. Use " + commandKey +"languages to get a list of languages", command);
                 }
-                break;*/
+                break;
 
             case ("translate"):
                 break;
