@@ -1,3 +1,5 @@
+//Author: Jacob Kszan, 2020
+
 
 //Importing JDA Related Libraries
 import net.dv8tion.jda.api.JDABuilder;
@@ -131,7 +133,9 @@ public class Core extends ListenerAdapter {
                 }
                 break;
 
+            //De-selects a default language
             case "cancelDefaultLanguage":
+                //Checks if auto-Translate is on and disallows it if so
                 if(!getAutoTranslate(currentUser)) {
                     if (defaultLanguageSet(currentUser)) {
                         setDefaultLanguage(currentUser, null);
@@ -148,6 +152,7 @@ public class Core extends ListenerAdapter {
             //Main Translation command
             case ("translate"):
 
+                //Checks for default language, default language takes precedence over input
                 if(defaultLanguageSet(currentUser)){
                     try {
                         translated = translator.translate(commandList[1], getDefaultLanguage(currentUser), textList[1]);
@@ -164,6 +169,7 @@ public class Core extends ListenerAdapter {
                     }
                 }
                 else{
+                    //Non default language translation
                     try {
                         translated = translator.translate(commandList[1], commandList[2], textList[1]);
                         respondTranslated(translated, command);
@@ -290,6 +296,7 @@ public class Core extends ListenerAdapter {
                 respond(helpString, command);
                 break;
 
+            //Changes the starting character that signifies a command
             case "setCommandKey":
 
                 try{
@@ -300,10 +307,12 @@ public class Core extends ListenerAdapter {
                 }
                 break;
 
+            //Sends a list of accepted languages
             case "languages":
                 respond("Languages supported: Afrikaans, Irish, Albanian, Italian, Arabic, Japanese, Azerbaijani, Korean, Latin, Chinese-simplified, Chinese-traditional, Polish, Portuguese, English, German, Spanish, French, Slovenian", command);
                 break;
 
+            //Like the prior translate, except submitting an empty string for the source lang parameter. This indicates that the language should be detected
             case "detectLanguageTranslate":
 
                 if(defaultLanguageSet(currentUser)) {
@@ -346,10 +355,12 @@ public class Core extends ListenerAdapter {
 
     }
 
+    //Checks if a language is supported
     private boolean testLanguage(String lang){
         return(translator.testLanguage(lang));
     }
 
+    //Helper method that implements the setCommandKey case statement from handleCommands()
     private void setCommandKey(String[] commandList, MessageReceivedEvent command){
         if(commandList[1].length() == 1) {
             commandKey =  commandList[1].charAt(0);
@@ -360,13 +371,14 @@ public class Core extends ListenerAdapter {
         }
     }
 
-
+                                                                               
+    //Main method, attributes a token to the discord bot and runs it. This main method and only this main method is based on a tutorial I found on StackExchange
     public static void main(String args[]) throws LoginException {
-        JDABuilder builder = JDABuilder.createDefault("Bot");
+        JDABuilder botMaker = JDABuilder.createDefault("Bot");
         String token = "NzMzMjEyMTQ5MjAzMzM3MjQ2.XxAjMg.vK2etJw71IYvK63ppKl6cuuoM8U";
-        builder.setToken(token);
-        builder.addEventListeners(new Core());
-        builder.build();
+        botMaker.setToken(token);
+        botMaker.addEventListeners(new Core());
+        botMaker.build();
 
     }
 }
