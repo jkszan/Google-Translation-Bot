@@ -14,14 +14,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 
-
+//Core is the main class of the translation bot, it handles determining the response to a MessageRecievedEvent and any commands that the user inputs
 public class Core extends ListenerAdapter {
-
-    //Add Functionality, defaultResponseLanguage
-    //Add Functionality, autoTranslate
-    //Add Functionality, manual translate
-    //Add Functionality, help command
-    //Add Functionality, Detect Language
 
     //Instance Variables
 
