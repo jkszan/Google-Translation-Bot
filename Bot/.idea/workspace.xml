@@ -20,20 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f6d2163-5c7a-4a27-9a47-6b64a3f2b520" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Bot.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gtranslateapi_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Bot_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Translator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/gtranslateapi-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jl1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Core.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Core.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/UserSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/UserSettings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Translation.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +54,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -71,14 +75,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/gtranslateapi-1.0.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="com.intellij.jarRepository.settings.RemoteRepositoriesConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Core">
     <configuration name="Core" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Core" />
+      <module name="Bot.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Translator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Translator" />
       <module name="Bot.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -87,6 +98,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Core" />
+        <item itemvalue="Application.Translator" />
       </list>
     </recent_temporary>
   </component>
@@ -115,26 +127,30 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="181" y="0" key="#Project_Structure" timestamp="1595447905095">
+      <screen x="62" y="0" width="1298" height="768" />
+    </state>
+    <state x="181" y="0" key="#Project_Structure/62.0.1298.768@62.0.1298.768" timestamp="1595447905095" />
     <state x="438" y="124" key="FileChooserDialogImpl" timestamp="1595086495274">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
     <state x="438" y="124" key="FileChooserDialogImpl/62.0.1298.768@62.0.1298.768" timestamp="1595086495274" />
-    <state width="1238" height="179" key="GridCell.Tab.0.bottom" timestamp="1595091234827">
+    <state width="1238" height="179" key="GridCell.Tab.0.bottom" timestamp="1595466942972">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state width="1238" height="179" key="GridCell.Tab.0.bottom/62.0.1298.768@62.0.1298.768" timestamp="1595091234827" />
-    <state width="1238" height="179" key="GridCell.Tab.0.center" timestamp="1595091234826">
+    <state width="1238" height="179" key="GridCell.Tab.0.bottom/62.0.1298.768@62.0.1298.768" timestamp="1595466942972" />
+    <state width="1238" height="179" key="GridCell.Tab.0.center" timestamp="1595466942972">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state width="1238" height="179" key="GridCell.Tab.0.center/62.0.1298.768@62.0.1298.768" timestamp="1595091234826" />
-    <state width="1238" height="179" key="GridCell.Tab.0.left" timestamp="1595091234826">
+    <state width="1238" height="179" key="GridCell.Tab.0.center/62.0.1298.768@62.0.1298.768" timestamp="1595466942972" />
+    <state width="1238" height="179" key="GridCell.Tab.0.left" timestamp="1595466942972">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state width="1238" height="179" key="GridCell.Tab.0.left/62.0.1298.768@62.0.1298.768" timestamp="1595091234826" />
-    <state width="1238" height="179" key="GridCell.Tab.0.right" timestamp="1595091234826">
+    <state width="1238" height="179" key="GridCell.Tab.0.left/62.0.1298.768@62.0.1298.768" timestamp="1595466942972" />
+    <state width="1238" height="179" key="GridCell.Tab.0.right" timestamp="1595466942972">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state width="1238" height="179" key="GridCell.Tab.0.right/62.0.1298.768@62.0.1298.768" timestamp="1595091234826" />
+    <state width="1238" height="179" key="GridCell.Tab.0.right/62.0.1298.768@62.0.1298.768" timestamp="1595466942972" />
     <state x="212" y="0" key="SettingsEditor" timestamp="1595086497598">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
