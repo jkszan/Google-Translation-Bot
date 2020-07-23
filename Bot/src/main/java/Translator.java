@@ -1,6 +1,7 @@
-
+//Author: Jacob Kszan, 2020.
 //Import Statements
 
+//Importing HTML Related libraries
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
@@ -10,11 +11,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+
+//Importing hashmap to link full name languages and their accepted prefix values
 import java.util.HashMap;
 
+//Importing jsoup to properly decode HTML code (Example: #&39 instead of ')
 import org.jsoup.*;
 import org.jsoup.parser.*;
 
+
+//Translator includes a handful of methods that are core to the process of translating text
 public class Translator {
 
     //Hashmap that ties the full English names of languages to their accepted prefix values
@@ -86,7 +92,7 @@ public class Translator {
                 langFrom = "";
             }
 
-            //URL of my google scripts webapp that will proxy a translation from Google Translate
+            //URL of my google scripts webapp that will proxy a translation from Google Translate. The next 20 lines are somewhat based off of a tutorial on StackExchange
             String urlStr = "https://script.google.com/macros/s/AKfycbxdEqXQnSawcnTQ7WRuNI_KvHmWnooQtChyhWewwfQfD5Cb8osX/exec" +
                     "?q=" + URLEncoder.encode(text, "UTF-8") +
                     "&target=" + langTo +
