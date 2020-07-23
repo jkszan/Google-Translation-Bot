@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="gtranslateapi-1.0">
+  <library name="jsoup-1.13.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/gtranslateapi-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsoup-1.13.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

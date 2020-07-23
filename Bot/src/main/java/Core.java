@@ -52,7 +52,7 @@ public class Core extends ListenerAdapter {
             try {
                 //Translates a detected language to the default language selected
                 translated = translator.translate("", getDefaultLanguage(currentUser), mess.getMessage().getContentRaw());
-                respond(translated, mess);
+                respondTranslated(translated, mess);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -94,6 +94,10 @@ public class Core extends ListenerAdapter {
         userPreferences.get(user).setAutoTranslate(set);
     }
 
+    private void respondTranslated(String text, MessageReceivedEvent mess){
+        mess.getChannel().sendMessage(mess.getAuthor().getName() + ": " + text).queue();
+    }
+
     //Main method that handles commands made by users
     public void handleCommands(@NotNull MessageReceivedEvent command){
 
@@ -128,12 +132,16 @@ public class Core extends ListenerAdapter {
                 break;
 
             case "cancelDefaultLanguage":
-                if(defaultLanguageSet(currentUser)){
-                    setDefaultLanguage(currentUser, null);
-                    respond("Default Language cancelled", command);
+                if(!getAutoTranslate(currentUser)) {
+                    if (defaultLanguageSet(currentUser)) {
+                        setDefaultLanguage(currentUser, null);
+                        respond("Default Language cancelled", command);
+                    } else {
+                        respond("Default Language is not set", command);
+                    }
                 }
                 else{
-                    respond("Default Language is not set", command);
+                    respond("Disable Auto Translate before cancelling Default Language", command);
                 }
                 break;
 
@@ -143,7 +151,7 @@ public class Core extends ListenerAdapter {
                 if(defaultLanguageSet(currentUser)){
                     try {
                         translated = translator.translate(commandList[1], getDefaultLanguage(currentUser), textList[1]);
-                        respond(translated, command);
+                        respondTranslated(translated, command);
                     }
                     catch(IOException e){
                         respond(e.getMessage(), command);
@@ -158,7 +166,7 @@ public class Core extends ListenerAdapter {
                 else{
                     try {
                         translated = translator.translate(commandList[1], commandList[2], textList[1]);
-                        respond(translated, command);
+                        respondTranslated(translated, command);
                     }
                     catch(IOException e){
                         respond(e.getMessage(), command);
@@ -188,7 +196,7 @@ public class Core extends ListenerAdapter {
             //Disables auto-translate provided that it is enabled
             case "disableAutoTranslate":
                 if(getAutoTranslate(currentUser)){
-                    setAutoTranslate(currentUser, true);
+                    setAutoTranslate(currentUser, false);
                     respond("Auto Translate Disabled", command);
                 }
                 else{
@@ -196,18 +204,89 @@ public class Core extends ListenerAdapter {
                 }
                 break;
 
+                //This command just replies with a list of commands and a short summary of what they do
             case "help":
-                String helpString;
-                helpString = """
-                        Commands:
-                        translate - Translates Text
-                        setDefaultLanguage - Sets Default Language
-                        cancelDefaultLanguage - Cancels Default Language
-                        enableAutoTranslate - Enables Auto Translate
-                        disableAutoTranslate - Disables Auto Translate
-                        setCommandKey - Sets commandKey to a different value (Default: %)
-                        languages - Displays a list of compatible languages
-                        detectLanguageTranslate - translates text, automatically determining origin text""";
+                String helpString ="Error in HelpString production";
+                try {
+                    //This switch statement produces a helpString for each individual command
+                    switch (commandList[1]) {
+                        case("translate"):
+                            helpString = """
+                                    Translates text from one language to another
+                                    
+                                    translate [Origin Language] [Target Language] [\"Text"\"]
+                                    Alternatively, if a default language is set:
+                                    translate [Origin Language] [\"Text\"]
+                                    Text must be surrounded by quotations""";
+                            break;
+
+                        case ("setDefaultLanguage"):
+                            helpString = """
+                                    Sets a default target language for translations and auto-translate
+                                    
+                                    setDefaultLanguage [Language]""";
+                            break;
+                        case("cancelDefaultLanguage"):
+                            helpString = """
+                                    Resets your default language to none
+                                    
+                                    cancelDefaultLanguage""";
+                            break;
+                        case("enableAutoTranslate"):
+                            helpString = """
+                                    Enables auto translate using your set default language
+                                    
+                                    enableAutoTranslate""";
+                            break;
+                        case("disableAutoTranslate"):
+                            helpString = """
+                                    Disables auto translate
+                                    
+                                    disableAutoTranslate""";
+                            break;
+                        case("setCommandKey"):
+                            helpString = """
+                                    Sets your command key (Default: %) to a different one character value
+                                    
+                                    setCommandKey [New Command Key]
+                                   """;
+                            break;
+                        case("languages"):
+                            helpString = """
+                                    Displays a list of languages in the correct spelling that you can use for translation
+                                    
+                                    languages""";
+                            break;
+                        case("detectLanguageTranslate"):
+                            helpString = """
+                                    Translates text without the need to specify the original language
+                                    
+                                    detectLanguageTranslate [Target Language] [\"Text\"]
+                                    Text must be contained in quotations""";
+                                break;
+                        default:
+                            helpString = "Command not recognized, please use " + commandKey +"help to get a list of commands";
+
+                    }
+                }
+                //This catches if no individual command was specified and instead gives a general helpString
+                catch(IndexOutOfBoundsException e) {
+                    helpString = """
+                            Commands:
+                            translate - Translates Text
+                            setDefaultLanguage - Sets Default Language
+                            cancelDefaultLanguage - Cancels Default Language
+                            enableAutoTranslate - Enables Auto Translate
+                            disableAutoTranslate - Disables Auto Translate
+                            setCommandKey - Sets commandKey to a different value (Default: %)
+                            languages - Displays a list of compatible languages
+                            detectLanguageTranslate - translates text, automatically determining origin text
+                            
+                            Type""" + " " + commandKey + "help [Command] to get more information on a specific command";
+
+
+                }
+
                 respond(helpString, command);
                 break;
 
@@ -230,7 +309,7 @@ public class Core extends ListenerAdapter {
                 if(defaultLanguageSet(currentUser)) {
                     try {
                         translated = translator.translate("", getDefaultLanguage(currentUser), textList[1]);
-                        respond(translated, command);
+                        respondTranslated(translated, command);
                     }
                     catch(IOException e) {
                         respond(e.toString(), command);
@@ -245,7 +324,7 @@ public class Core extends ListenerAdapter {
                 else {
                     try {
                         translated = translator.translate("", commandList[1], textList[1]);
-                        respond(translated, command);
+                        respondTranslated(translated, command);
                     }
                     catch(IOException e) {
                         respond(e.toString(), command);

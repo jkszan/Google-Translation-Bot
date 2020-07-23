@@ -1,6 +1,9 @@
 
 //Import Statements
 
+import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.HTMLEditorKit;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +12,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+import org.jsoup.*;
+import org.jsoup.parser.*;
 
 public class Translator {
 
@@ -101,7 +106,8 @@ public class Translator {
                 response.append(inputLine);
             }
             in.close();
-            return response.toString();
+            String formattedResponse = Jsoup.parse(String.valueOf(response)).text();
+            return formattedResponse;
         }
 
     }

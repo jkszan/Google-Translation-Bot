@@ -20,17 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f6d2163-5c7a-4a27-9a47-6b64a3f2b520" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Translator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jsoup_1_13_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/gtranslateapi_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gtranslateapi-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jl1.0.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/Core.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Core.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/UserSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/UserSettings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Translation.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Translator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Translator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Translator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Translator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,11 +73,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/gtranslateapi-1.0.jar!/" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jsoup-1.13.1.jar!/" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="com.intellij.jarRepository.settings.RemoteRepositoriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nev\Documents\GitHub\Assignment-5-Translation-Bot\Bot\lib" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Core">
     <configuration name="Core" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -125,35 +129,36 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="181" y="0" key="#Project_Structure" timestamp="1595447905095">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
     <state x="181" y="0" key="#Project_Structure/62.0.1298.768@62.0.1298.768" timestamp="1595447905095" />
-    <state x="438" y="124" key="FileChooserDialogImpl" timestamp="1595086495274">
+    <state x="438" y="124" key="FileChooserDialogImpl" timestamp="1595517914452">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state x="438" y="124" key="FileChooserDialogImpl/62.0.1298.768@62.0.1298.768" timestamp="1595086495274" />
-    <state width="1238" height="179" key="GridCell.Tab.0.bottom" timestamp="1595466942972">
+    <state x="438" y="124" key="FileChooserDialogImpl/62.0.1298.768@62.0.1298.768" timestamp="1595517914452" />
+    <state width="1254" height="176" key="GridCell.Tab.0.bottom" timestamp="1595518237286">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state width="1238" height="179" key="GridCell.Tab.0.bottom/62.0.1298.768@62.0.1298.768" timestamp="1595466942972" />
-    <state width="1238" height="179" key="GridCell.Tab.0.center" timestamp="1595466942972">
+    <state width="1254" height="176" key="GridCell.Tab.0.bottom/62.0.1298.768@62.0.1298.768" timestamp="1595518237286" />
+    <state width="1254" height="176" key="GridCell.Tab.0.center" timestamp="1595518237286">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state width="1238" height="179" key="GridCell.Tab.0.center/62.0.1298.768@62.0.1298.768" timestamp="1595466942972" />
-    <state width="1238" height="179" key="GridCell.Tab.0.left" timestamp="1595466942972">
+    <state width="1254" height="176" key="GridCell.Tab.0.center/62.0.1298.768@62.0.1298.768" timestamp="1595518237286" />
+    <state width="1254" height="176" key="GridCell.Tab.0.left" timestamp="1595518237286">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state width="1238" height="179" key="GridCell.Tab.0.left/62.0.1298.768@62.0.1298.768" timestamp="1595466942972" />
-    <state width="1238" height="179" key="GridCell.Tab.0.right" timestamp="1595466942972">
+    <state width="1254" height="176" key="GridCell.Tab.0.left/62.0.1298.768@62.0.1298.768" timestamp="1595518237286" />
+    <state width="1254" height="176" key="GridCell.Tab.0.right" timestamp="1595518237286">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state width="1238" height="179" key="GridCell.Tab.0.right/62.0.1298.768@62.0.1298.768" timestamp="1595466942972" />
-    <state x="212" y="0" key="SettingsEditor" timestamp="1595086497598">
+    <state width="1254" height="176" key="GridCell.Tab.0.right/62.0.1298.768@62.0.1298.768" timestamp="1595518237286" />
+    <state x="212" y="0" key="SettingsEditor" timestamp="1595518082848">
       <screen x="62" y="0" width="1298" height="768" />
     </state>
-    <state x="212" y="0" key="SettingsEditor/62.0.1298.768@62.0.1298.768" timestamp="1595086497598" />
+    <state x="212" y="0" key="SettingsEditor/62.0.1298.768@62.0.1298.768" timestamp="1595518082848" />
   </component>
 </project>
