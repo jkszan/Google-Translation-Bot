@@ -1,6 +1,7 @@
+//Author: Jacob Kszan, 2020.
 
 //UserSettings is a class tied to each Discord User that stores settings relating to the translation app
-
+//It allows us to implement defaultLanguage and autoTranslate based on user and not on instance of the bot
 public class UserSettings {
 
     //Instance variables
@@ -31,7 +32,8 @@ public class UserSettings {
     public boolean getAutoTranslate(){
         return autoTranslate;
     }
-
+    
+    //Sets autoTranslate variable to the passed boolean
     public void setAutoTranslate(boolean auto){
         autoTranslate = auto;
     }
