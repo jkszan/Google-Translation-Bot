@@ -366,10 +366,10 @@ public class Core extends ListenerAdapter {
     }
 
                                                                                
-    //Main method, attributes a token to the discord bot and runs it. This main method and only this main method is based on a tutorial I found on StackExchange
+    //Main method, attributes a token to the discord bot and runs it
     public static void main(String args[]) throws LoginException {
         JDABuilder botMaker = JDABuilder.createDefault("Bot");
-        String token = "NzMzMjEyMTQ5MjAzMzM3MjQ2.XxAjMg.vK2etJw71IYvK63ppKl6cuuoM8U";
+        String token = "";          //String token requires an OAuth token that allows access to the bot
         botMaker.setToken(token);
         botMaker.addEventListeners(new Core());
         botMaker.build();
